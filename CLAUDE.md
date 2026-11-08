@@ -246,7 +246,12 @@ Es preferible terminar tres o cuatro niveles bien diseñados que diez vacíos. E
 - Reglas de muerte: respiración detrás = **no te muevas** (`LookBackEncounter` modo Freeze); pasos detrás = **no mires atrás** (modo NoLook, pendiente de sonido de pasos).
 - Salud por golpes (`PlayerHealth`): cada ataque quita 50; dos golpes matan. Vendajes curan. Reemplaza al sistema de corazones en los niveles reales (el prototipo conserva `GameManager`/`HeartsUI`).
 - El fantasma del jumpscare es un objeto temporal (`TEMP_Ghost`) hasta tener el modelo real. No se descargan assets sin autorización (sección 11).
-- Falta por verificar en Unity: todo lo anterior (ver lista de pruebas en el informe del Nivel 1).
+- **Pacientes y doppelgänger** (`PatientNPC`, `Subtitles`, `PowerZone`, `ApproachingEntity`, generados por `Level01Builder.BuildPatients`):
+  - Paciente real (depósito, `TEMP_Patient_Real`): pista verdadera por subtítulos y se desvanece al terminar.
+  - Impostor (pasillo, `TEMP_Patient_Impostor`): pista falsa hacia el cuarto eléctrico. Si se le apunta con la linterna `revealSeconds` seguidos, aparecen ojos rojos y se delata.
+  - `PowerZone_Electric` (cuarto eléctrico): las luces fallan, encuentro de respiración reforzado y repetible, y `ApproachingEntity` aparece tras `appearDelay` y camina hacia el jugador (golpe de `PlayerHealth` si lo alcanza; salir de la zona la retira).
+  - Figuras temporales (`TEMP_`) hasta tener los modelos reales.
+- Falta por verificar en Unity: todo lo anterior, incluida la mecánica de pacientes (no se ha probado en el Editor).
 
 ## 18. Principio final
 
